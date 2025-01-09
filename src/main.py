@@ -3,7 +3,7 @@ import torch.nn as nn
 
 model = nn.Linear(2, 1)
 lossfn = nn.MSELoss()
-data = [[2, 3], [2, 4], [2, 5], [2, 6], [2, 7]]
+data = [[2, 3], [4, 2], [2, 5], [6, 2], [2, 7]]
 x = torch.tensor(data, dtype=torch.float32)
 target = [[6], [8], [10], [12], [14]]
 y = torch.tensor(target, dtype=torch.float32)
