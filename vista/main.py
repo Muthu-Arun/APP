@@ -20,7 +20,7 @@ transform = transforms.Compose([
 ])
 
 # Load dataset using ImageFolder
-train_data = datasets.ImageFolder(root='./train', transform=transform)
+train_data = datasets.ImageFolder(root='./vista/train', transform=transform)
 train_loader = DataLoader(train_data, batch_size=32, shuffle=True)
 
 # Check dataset structure
