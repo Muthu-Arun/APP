@@ -33,10 +33,11 @@ def predict_image(image_path):
     image = transform(image).unsqueeze(0).to(device)
 
     with torch.no_grad():
-        output = model(image)
-        _, predicted = torch.max(output, 1)
+        output: torch.tensor = model(image)
+        probability_of_predicted, predicted = torch.max(output, 1)
 
     # 0 -> Fake, 1 -> Real
+    print("prediction : ", predicted, "confident :", probability_of_predicted)
     return predicted.item()
 
 # Step 4: Process all images in the directory and write results to CSV
@@ -60,7 +61,11 @@ def predict_and_write_to_csv(input_directory, output_csv):
 
 
 # Step 5: Call the function with your image directory and desired output CSV file
-input_directory = './train/fake/'  # Path to the directory with images
+    # Path to the directory with images
+# input_directory = '/media/arun/Data/dataset/test/'
+input_directory = './train/fake/'
+
+
 output_csv = 'predictions.csv'  # Output CSV file to save the results
 
 predict_and_write_to_csv(input_directory, output_csv)
