@@ -38,10 +38,11 @@ def predict_image(image_path):
     image = transform(image).unsqueeze(0).to(device)
 
     with torch.no_grad():
-        output = model(image)
-        _, predicted = torch.max(output, 1)
+        output: torch.tensor = model(image)
+        probability_of_predicted, predicted = torch.max(output, 1)
 
     # 0 -> Fake, 1 -> Real
+    print("prediction : ", predicted, "confident :", probability_of_predicted)
     return predicted.item()
 
 # Step 4: Process all images in the directory and write results to CSV
