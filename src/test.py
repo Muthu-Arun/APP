@@ -2,16 +2,16 @@ import torch
 import torch.nn as nn
 import torchvision
 
-model = nn.Sequential(nn.Linear(2, 6, bias=True), nn.ReLU(), nn.Linear(6, 1))
+model = nn.Sequential(nn.Linear(2, 1, bias=False), nn.ReLU(), nn.Linear(1, 1))
 lossfn = nn.MSELoss()
 data = [[2, 3], [4, 2], [2, 5], [6, 2], [2, 7]]
 x = torch.tensor(data, dtype=torch.float32)
 target = [[6], [8], [10], [12], [14]]
 y = torch.tensor(target, dtype=torch.float32)
 
-opt = torch.optim.SGD(model.parameters(), lr=0.01)
+opt = torch.optim.SGD(model.parameters(), lr=0.001)
 
-for epoach in range(30000):
+for epoach in range(3000):
     opt.zero_grad()
     prediction = model(x)
 
