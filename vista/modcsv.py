@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Read the existing CSV file into a DataFrame
-df = pd.read_csv('predictions.csv')
+df = pd.read_csv('new_predictions.csv')
 
 # Generate a set of all possible image_ids from 0 to 11999
 all_image_ids = set(range(12000))

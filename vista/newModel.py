@@ -13,7 +13,7 @@ transform = transforms.Compose([
 ])
 
 # Load dataset from train/real and train/fake
-dataset = datasets.ImageFolder(root="train", transform=transform)
+dataset = datasets.ImageFolder(root="./vista/train/", transform=transform)
 
 # Split dataset into train and validation
 train_size = int(0.8 * len(dataset))
@@ -43,7 +43,7 @@ criterion = nn.BCELoss()  # Binary Cross-Entropy Loss
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # Training Loop
-num_epochs = 5
+num_epochs = 15
 for epoch in range(num_epochs):
     model.train()
     running_loss = 0.0

@@ -6,7 +6,7 @@ import os
 import csv
 
 # Configuration
-IMAGE_FOLDER = "./train/fake/"  # Change this to your test folder
+IMAGE_FOLDER = r"C:\Users\amuth\Vista\dataset\dataset"  # Change this to your test folder
 MODEL_PATH = "deepfake_detector.pth"
 OUTPUT_CSV = "new_predictions.csv"
 
@@ -51,7 +51,7 @@ for image_name in os.listdir(IMAGE_FOLDER):
 # Save results to CSV
 with open(OUTPUT_CSV, mode="w", newline="") as file:
     writer = csv.writer(file)
-    writer.writerow(["image_name", "probability"])
+    writer.writerow(["image_id", "label"])
     writer.writerows(results)
 
 print(f"Predictions saved to {OUTPUT_CSV}")
