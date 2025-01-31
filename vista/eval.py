@@ -28,7 +28,12 @@ transform = transforms.Compose([
 
 
 def predict_image(image_path):
-    image = Image.open(image_path)
+    # image = Image.open(image_path)
+    try:
+        image = Image.open(image_path).convert('RGB')
+    except Exception as e:
+        print(f"Error loading image {image_path}: {e}")
+        return None  # Skip corrupt images
     # Add batch dimension and move to device
     image = transform(image).unsqueeze(0).to(device)
 
@@ -60,7 +65,7 @@ def predict_and_write_to_csv(input_directory, output_csv):
 
 
 # Step 5: Call the function with your image directory and desired output CSV file
-input_directory = './train/fake/'  # Path to the directory with images
+input_directory = r'C:\Users\amuth\Vista\dataset\dataset'  # Path to the directory with images
 output_csv = 'predictions.csv'  # Output CSV file to save the results
 
 predict_and_write_to_csv(input_directory, output_csv)
